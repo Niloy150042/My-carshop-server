@@ -55,6 +55,7 @@ async function run() {
         const id =req.params.id
         const query = {_id:new ObjectId(id)}
         const result = await addedcartcollection.findOne(query)
+        res.send(result)
     })
 
     app.post('/carts',async(req,res)=>{
@@ -63,6 +64,11 @@ async function run() {
       const result=await addedcartcollection.insertOne(carts)
       res.send(result)
 
+    })
+    app.put(`/carts/:id`,async(req,res)=>{
+      const id = req.params.id
+      const filter ={_id:new ObjectId(id)}
+      const options ={upsert:true}
     })
 
     app.delete('/carts/:id', async(req,res)=>{
