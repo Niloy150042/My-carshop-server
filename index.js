@@ -51,6 +51,10 @@ async function run() {
 
     })
 
+    app.get('/carts/:id',async(req,res)=>{
+        const id =req.params.id
+    })
+
     app.post('/carts',async(req,res)=>{
       const carts= req.body
       console.log(carts);
