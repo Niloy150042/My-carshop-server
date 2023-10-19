@@ -67,8 +67,21 @@ async function run() {
     })
     app.put(`/carts/:id`,async(req,res)=>{
       const id = req.params.id
-      const filter ={_id:new ObjectId(id)}
+      const filter ={_id: new ObjectId(id)}
       const options ={upsert:true}
+      const updattedcart= req.body
+
+      const cart ={
+        $set:{
+          name:updattedcart.name,
+          brandname :updattedcart.brandname,
+          type:updattedcart.type,
+          price :updattedcart.price,
+          carpicture:updattedcart.carpicture
+        }
+      }
+      const result = await addedcartcollection.updateOne(filter,cart,options)
+      res.send(result)
     })
 
     app.delete('/carts/:id', async(req,res)=>{
