@@ -69,7 +69,7 @@ async function run() {
       const id = req.params.id
       const filter ={_id: new ObjectId(id)}
       const options ={upsert:true}
-      const updattedcart= req.body
+      const updattedcart = req.body
 
       const cart ={
         $set:{
